@@ -14,6 +14,7 @@ import com.example.esteveshopfullytest.R
 import com.example.esteveshopfullytest.analytics.FlyerOpenEventImpl
 import com.example.esteveshopfullytest.analytics.FlyerSessionEventImpl
 import com.example.esteveshopfullytest.model.Flyer
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import java.time.Duration
 import java.util.*
@@ -28,7 +29,7 @@ class MyCustomDialog(val flyer: Flyer, val initSession: Calendar) : DialogFragme
         text.text = flyer.title
 
         val img = inflater.findViewById<ImageView>(R.id.img_detail)
-        Picasso.get().load(flyer.imgURL).into(img)
+        Picasso.get().load(flyer.imgURL).networkPolicy(NetworkPolicy.OFFLINE).into(img)
 
         val btn = inflater.findViewById<Button>(R.id.btn_accept)
         btn.setOnClickListener{

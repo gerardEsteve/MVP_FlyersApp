@@ -10,6 +10,6 @@ interface MainViewInterface {
     fun showLoading(show: Boolean)
     fun showFlyerDetails(position: Int)
     fun sendAnalyticsFlyerOpen(position: Int)
-    fun setFlyerReaded(position: Int)
-    fun showReadedFlyers(showReaded: Boolean)
+    fun setFlyerRead(position: Int)
+    fun showReadFlyers(showRead: Boolean)
 }

@@ -1,8 +1,6 @@
 package com.example.esteveshopfullytest.view.adapters
 
 import android.content.Context
-import android.icu.number.NumberFormatter.with
-import android.icu.number.NumberRangeFormatter.with
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,7 +68,6 @@ internal class MainAdapter( private val context: Context) : BaseAdapter(),Filter
     fun toggleClicked(checked: Boolean) {
         this.toggleChecked = checked
         filter.filter(checked.toString())
-      //  this.notifyDataSetChanged()
     }
 
     override fun getFilter(): Filter {
@@ -82,7 +79,7 @@ internal class MainAdapter( private val context: Context) : BaseAdapter(),Filter
             }
 
             override fun performFiltering(charSequence: CharSequence?): Filter.FilterResults {
-                val queryString = charSequence?.toString()?.toLowerCase()
+                val queryString = charSequence?.toString()?.lowercase()
                 val checked = queryString.toBoolean()
                 val filterResults = Filter.FilterResults()
                 filterResults.values = if (queryString==null || queryString.isEmpty() || !checked )

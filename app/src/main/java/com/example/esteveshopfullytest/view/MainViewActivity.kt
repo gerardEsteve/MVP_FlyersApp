@@ -3,7 +3,6 @@ package com.example.esteveshopfullytest.view
 import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,7 +21,6 @@ import kotlin.collections.ArrayList
 
 class MainViewActivity : AppCompatActivity(), MainViewInterface {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     private var flyersListPresenter = FlyersListPresenter(this@MainViewActivity)
@@ -78,9 +76,7 @@ class MainViewActivity : AppCompatActivity(), MainViewInterface {
         ).show()
     }
 
-    // cambiar visibilidad del "loading" dependiendo del boolean
     override fun showLoading(show: Boolean) {
-
         if(show){
             if(!progressDialog.isShowing){
                 progressDialog.setTitle("Please Wait")
@@ -107,13 +103,12 @@ class MainViewActivity : AppCompatActivity(), MainViewInterface {
         BaseApplication.instance.getStreamFully().process(flyerOpen)
     }
 
-    override fun setFlyerReaded(position: Int) {
+    override fun setFlyerRead(position: Int) {
         mainAdapter.getItem(position).read = true
         mainAdapter.notifyDataSetChanged()
     }
 
-    override fun showReadedFlyers(showReaded: Boolean) {
-        mainAdapter.toggleClicked(showReaded)
-        //binding.include.gridview.numColumns = 1
+    override fun showReadFlyers(showRead: Boolean) {
+        mainAdapter.toggleClicked(showRead)
     }
 }
